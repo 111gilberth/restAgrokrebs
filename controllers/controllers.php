@@ -10,10 +10,10 @@ require '../models/models.php';
             $nombre = $_POST['nombre'];
             $correo = $_POST['correo'];
             $mensaje = $_POST['mensaje'];
-            $ciudad = $_POST['ciudad'];
-            $estado = $_POST['estado'];
+            $idMunicipio = $_POST['ciudad'];
+            $idEstado = $_POST['estado'];
             $cp = $_POST['cp'];
-            $resp = $inst ->insertFormContact($idContacto,$nombre,$correo,$mensaje,$ciudad,$estado,$cp);
+            $resp = $inst ->insertFormContact($idContacto,$nombre,$correo,$mensaje,$idMunicipio,$idEstado,$cp);
                 if($resp){
                     echo $resp;
                 }else{

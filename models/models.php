@@ -44,7 +44,7 @@ require 'connect.php';
 
         }
     }
-   
+   /*
     $a = new models();
     $idContacto = mt_rand();
     $nombre = 'ari';
@@ -53,7 +53,7 @@ require 'connect.php';
     $idMunicipio = 1;
     $idEstado = 2;
     $cp = 'cp';
-    $b = $a -> insertFormContact($idContacto,$nombre,$correo,$mensaje,$idMunicipio,$idEstado,$cp);
-    echo $b;
+    $b = $a -> insertFormContact($idContacto,$nombre,$correo,$mensaje,$idMunicipio,$idEstado,$cp);*/
+    //echo $b;
 
 ?>
