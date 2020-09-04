@@ -3,7 +3,7 @@ require 'connect.php';
 
     class models{
         
-        public function insertFormContact($idContacto,$nombre,$correo,$mensaje,$ciudad,$estado,$cp){
+        public function insertFormContact($idContacto,$nombre,$correo,$mensaje,$idMunicipio,$idEstado,$cp){
             $con  = new connect();
             $conn = $con -> conectar();
 
@@ -15,9 +15,9 @@ require 'connect.php';
             if($match > 0){
                 echo "row does exist";
                 }else{
-                        $query = $conn -> query ( "INSERT INTO contact(idContacto,Nombre,Correo,Mensaje,idMunicipio,idEstado,Cp)VALUES('$idContacto','$nombre','$correo','$mensaje','$ciudad','$estado','$cp');" );
                         $ins = new models();
-                        $result = $ins -> insertFormRegion($idContacto,$ciudad,$estado,$cp);
+                        $result = $ins -> insertFormRegion($idContacto,$idMunicipio,$idEstado,$cp);
+                        $query = $conn -> query ( "INSERT INTO contact(idContacto,Nombre,Correo,Mensaje,idMunicipio,idEstado,Cp)VALUES('$idContacto','$nombre','$correo','$mensaje','$idMunicipio','$idEstado','$cp');" );
                         if($query || $result){
                             return "true";
                         }else{
@@ -30,11 +30,11 @@ require 'connect.php';
          
         }
 
-        public function insertFormRegion($idContacto,$ciudad,$estado,$cp){
+        public function insertFormRegion($idContacto,$idMunicipio,$idEstado,$cp){
             $con = new connect();
             $conn = $con -> conectar();
 
-            $query = $conn -> query ( "INSERT INTO region(ciudad,estado,cp,idContacto)VALUES('$ciudad','$estado','$cp','$idContacto');" );
+            $query = $conn -> query ( "INSERT INTO region(idMunicipio,idEstado,cp,idContacto)VALUES('$idMunicipio','$idEstado','$cp','$idContacto');" );
 
             if($query){
                  return "true";
@@ -45,14 +45,15 @@ require 'connect.php';
         }
     }
    
-   /*$a = new models();
-    $nombre = 'nombre15';
+    $a = new models();
+    $idContacto = mt_rand();
+    $nombre = 'ari';
     $correo = 'correo';
     $mensaje = 'mensaje';
-    $ciudad = 'ciudad';
-    $estado = 'estado';
+    $idMunicipio = 1;
+    $idEstado = 2;
     $cp = 'cp';
-    $b = $a -> insertFormContact($nombre,$correo,$mensaje,$ciudad,$estado,$cp);
-    echo $b;*/
+    $b = $a -> insertFormContact($idContacto,$nombre,$correo,$mensaje,$idMunicipio,$idEstado,$cp);
+    echo $b;
 
 ?>

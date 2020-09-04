@@ -6,7 +6,7 @@ require '../models/models.php';
         switch ($_POST['action']) {
         case 'insertFormData':
             $inst = new models();
-            $idContacto = $_POST['idContacto'];
+            $idContacto = mt_rand();
             $nombre = $_POST['nombre'];
             $correo = $_POST['correo'];
             $mensaje = $_POST['mensaje'];
@@ -29,5 +29,6 @@ require '../models/models.php';
         echo "No command";
     }
 
+//echo mt_rand();
 
 ?>
